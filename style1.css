@@ -1,0 +1,694 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    --red: #1d7a7f;
+    --white: #fff;
+    --dark: #1e1c2a;
+    --bg-sobre: #f0f0f0; /* Define a cor de fundo para a seção Sobre */
+    --bg-servicos: #fff; /* Define a cor de fundo para a seção Serviços */
+}
+
+body {
+    color: var(--dark);
+    background: var(--white);
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 40px;
+    box-shadow: 0 0.1rem 0.5rem #ccc;
+    width: 100%;
+    background: var(--white);
+    transition: all 0.5s;
+    position: fixed;
+    z-index: 10000;
+}
+
+.navigation .logo img {
+    max-width: 100px; /* Ajuste conforme necessário */
+    height: auto;
+}
+
+.navigation ul {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.navigation ul li a {
+    color: var(--dark);
+    font-size: 17px;
+    font-weight: 500;
+    transition: all 0.5s;
+}
+
+.navigation ul li a:hover {
+    color: var(--red);
+}
+
+.navigation i {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.menu {
+    cursor: pointer;
+    display: block; /* Certifique-se de que está visível */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+.menu .bar {
+    display: block;
+    width: 28px;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--dark);
+    margin: 5px auto;
+    transition: all 0.3s;
+}
+
+.menu .bar:nth-child(1),
+.menu .bar:nth-child(3) {
+    background: var(--red);
+}
+
+.menu.close-icon .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu.close-icon .bar:nth-child(2) {
+    opacity: 0; /* Oculta a barra do meio */
+}
+
+.menu.close-icon .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Estilo para a sobreposição */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+body.menu-open .menu-overlay {
+    display: block;
+}
+
+/* Estilo para o menu lateral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Inicialmente fora da tela */
+    width: 250px;
+    height: 100%;
+    background: #fff; /* Cor do menu */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out; /* Animação suave */
+    z-index: 1000;
+}
+
+/* Quando o menu estiver aberto */
+body.menu-open .side-menu {
+    right: 0; /* Move o menu para dentro da tela */
+}
+
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fundo escuro semitransparente */
+    z-index: 999;
+}
+
+body.menu-open .menu-overlay {
+    display: block;
+}
+
+
+.home {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 10%;
+    flex-direction: column;
+}
+
+.home-text {
+    max-width: 600px;
+    z-index: 1000;
+}
+
+.home-text .text-h4 {
+    font-size: 50px;
+    color: var(--red);
+    margin-bottom: 1rem;
+}
+
+.home-text .text-h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 3.5rem;
+    font-weight: 4;
+}
+
+.home-text p {
+    margin-bottom: 2rem;
+}
+
+.home-btn {
+    padding: 15px 45px;
+    background: var(--red);
+    color: var(--white);
+    border-radius: 10px;
+    font-weight: 700;
+    transition: all 0.5s;
+}
+
+.home-btn:hover {
+    background: #348dd6;
+}
+.home {
+    background-image: url('fundo1.jpg'); /* Define a imagem de fundo */
+    background-size: cover; /* Ajusta o tamanho da imagem para cobrir toda a área */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    background-position: center; /* Centraliza a imagem */
+    padding: 50px; /* Adiciona um preenchimento interno para o conteúdo */
+    position: relative; /* Para que o conteúdo dentro da seção possa ser posicionado */
+}
+
+/* Media query para telas menores, onde a imagem será responsiva */
+@media screen and (max-width: 768px) {
+    .home {
+        background-size: contain; /* Ajusta o tamanho da imagem para caber dentro da área */
+    }
+}
+
+.home::before {
+    content: ''; /* Cria um pseudo-elemento para criar uma camada de sobreposição */
+    position: absolute; /* Posiciona o pseudo-elemento em relação ao pai (.home) */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Define uma cor de sobreposição semi-transparente */
+    z-index: 1; /* Coloca a sobreposição sobre a imagem de fundo */
+}
+@media (max-width: 785px) {
+    .navigation {
+        padding: 18px 20px;
+        flex-direction: column;
+    }
+
+    .navigation ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .navigation .menu {
+        display: block;
+    }
+
+    .menu.ativo .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu.ativo .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu.ativo .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        background: var(--white);
+        gap: 1rem;
+        padding-top: 20px;
+        transition: 0.3s;
+    }
+
+    .nav-menu.ativo {
+        right: 0;
+    }
+
+    .home {
+        padding: 100px 2%;
+    }
+
+    .home-text .text-h4 {
+        font-size: 30px;
+    }
+
+    .home-text .text-h1 {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+
+    .home-text p {
+        font-size: 1rem;
+    }
+
+    .home-btn {
+        padding: 10px 30px;
+    }
+    .sobre {
+        padding: 50px 5%;
+    }
+
+    .sobre-text .text-h2 {
+        font-size: 2rem;
+    }
+
+    .sobre-text p {
+        font-size: 1rem;
+    }
+
+    .servicos {
+        padding: 50px 5%;
+    }
+
+    .servicos-text .text-h2 {
+        font-size: 2rem;
+    }
+
+    .servicos-text p {
+        font-size: 1rem;
+    }
+
+    .servicos-grid {
+        flex-direction: column;
+    }
+
+    .servico-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease, width 0s ease 0.3s;
+}
+
+.menu-open .menu-overlay {
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    z-index: 10000;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease;
+    color: #1e1c2a; /* Adicionando a cor do texto aqui */
+    padding-top: 50px;
+}
+
+.side-menu li a {
+    color: #1e1c2a; /* Adicionando a cor do texto para os links */
+}
+.side-menu li {
+    margin-bottom: 20px; /* Adicione um espaçamento entre os itens */
+}
+
+.menu-open .side-menu {
+    left: 0;
+    transition: left 0.3s ease;
+}
+.sobre {
+    width: 100%;
+    padding: 100px 10%;
+    background: var(--bg-sobre); /* Aplica a cor de fundo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 40px;
+}
+
+.sobre-text {
+    max-width: 800px;
+    margin-bottom: 50px; /* Adiciona espaçamento abaixo do texto */
+}
+
+.sobre-text .text-h2 {
+    font-size: 2.5rem;
+    color: var(--red);
+    margin-bottom: 1rem;
+}
+
+.sobre-text p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.equipe-image {
+    display: flex; /* Define flex para alinhar itens lado a lado */
+    flex-direction: row; /* Alinha os itens em linha */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    margin-top: -30px; /* Adiciona espaço acima da imagem */
+}
+
+.equipe-image img {
+    max-width:80%; /* Define a largura máxima da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 10px; /* Adiciona um leve arredondamento nas bordas */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+}
+.servicos {
+    width: 100%;
+    padding: 100px 10%;
+    background: var(--bg-servicos);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.servicos-text {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.servicos-text .text-h2 {
+    font-size: 2.5rem;
+    color: var(--red);
+    margin-bottom: 1rem;
+}
+
+.servicos-text p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.servicos-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.servico-item {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.servico-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.servico-item h3 {
+    font-size: 1.5rem;
+    color: var(--red);
+    margin-bottom: 10px;
+}
+
+.servico-item p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 1.5rem; /* Espaçamento entre a descrição e os botões */
+}
+
+.servico-item .home-btn {
+    display: block;
+    margin-top: 1rem; /* Espaço entre a descrição e os botões */
+    padding: 10px 20px; /* Ajuste conforme necessário */
+    background-color: var(--red);
+    color: var(--white);
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.servico-item .home-btn:hover {
+    background-color: #348dd6;
+}
+.servico-item:hover {
+    transform: translateY(-10px); /* Move o item para cima */
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.2); /* Aumenta a sombra */
+}
+.footer {
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.contatos h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #1d7a7f;
+}
+
+.contatos ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contatos li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #1e1c2a;
+}
+
+.contatos i {
+    margin-right: 10px;
+    font-size: 24px;
+    color: #1d7a7f;
+}
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 70px; /* Define uma largura fixa para o ícone */
+    height: 70px; /* Define uma altura fixa igual à largura */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px; /* Aumenta o tamanho do ícone */
+    color: #25d366;
+    background-color: white;
+    border-radius: 50%; /* Torna o ícone perfeitamente redondo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Mantém o ícone acima de outros elementos */
+    animation: bounce 2s infinite; /* Adiciona a animação de pulo */
+    transition: transform 0.2s;
+}
+
+.whatsapp-icon:hover {
+    transform: scale(1.1); /* Aumenta um pouco o ícone ao passar o mouse */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+footer a{
+    color: #1e1c2a;
+
+}
+
+.acompanhamento {
+    padding: 50px 20px;
+    background-color: #f4f4f4; /* Fundo cinza claro */
+    color: #1d7a7f; /* Texto preto */
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.acompanhamento::before, .acompanhamento::after {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+    z-index: 1;
+}
+
+.acompanhamento::before {
+    top: -20%;
+    left: -30%;
+    animation-delay: 0s;
+}
+
+.acompanhamento::after {
+    bottom: -20%;
+    right: -30%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(20px, -20px);
+    }
+}
+
+.acompanhamento-text {
+    position: relative;
+    z-index: 2;
+}
+
+.acompanhamento h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease forwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.acompanhamento p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    animation: fadeInUp 1.2s ease forwards;
+    color: #1e1c2a
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.acompanhamento ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 800px;
+    animation: fadeIn 1.5s ease forwards;
+    
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.acompanhamento ul li {
+    font-size: 1rem;
+    margin: 15px 0;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    color: #1e1c2a;
+   
+}
+
+.acompanhamento ul li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+    transition: left 0.4s ease-in-out;
+}
+
+.acompanhamento ul li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.acompanhamento ul li:hover::before {
+    left: 0;
+}

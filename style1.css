@@ -557,11 +557,12 @@ footer a{
 
 .acompanhamento {
     padding: 50px 20px;
-    background-color: #f4f4f4; /* Fundo cinza claro */
-    color: #1d7a7f; /* Texto preto */
+    background-color: #f4f4f4;
+    color: #1d7a7f;
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .acompanhamento::before, .acompanhamento::after {
@@ -626,7 +627,7 @@ footer a{
     line-height: 1.6;
     margin-bottom: 30px;
     animation: fadeInUp 1.2s ease forwards;
-    color: #1e1c2a
+    color: #1e1c2a;
 }
 
 @keyframes fadeInUp {
@@ -646,7 +647,6 @@ footer a{
     margin: 0 auto;
     max-width: 800px;
     animation: fadeIn 1.5s ease forwards;
-    
 }
 
 @keyframes fadeIn {
@@ -669,7 +669,6 @@ footer a{
     overflow: hidden;
     z-index: 2;
     color: #1e1c2a;
-   
 }
 
 .acompanhamento ul li::before {
@@ -691,4 +690,61 @@ footer a{
 
 .acompanhamento ul li:hover::before {
     left: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .acompanhamento {
+        padding: 30px 15px;
+    }
+
+    .acompanhamento h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .acompanhamento p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .acompanhamento ul {
+        padding: 0 15px;
+    }
+
+    .acompanhamento ul li {
+        font-size: 0.9rem;
+        margin: 10px 0;
+        padding: 8px 15px;
+    }
+
+    .acompanhamento ul li::before {
+        left: -80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .acompanhamento {
+        padding: 20px 10px;
+    }
+
+    .acompanhamento h2 {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+
+    .acompanhamento p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .acompanhamento ul li {
+        font-size: 0.8rem;
+        margin: 8px 0;
+        padding: 6px 10px;
+    }
+
+    .acompanhamento ul li::before {
+        left: -60%;
+    }
 }
